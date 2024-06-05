@@ -20,6 +20,8 @@ const resetButton = document.querySelector('#reset');
 const eraseButton = document.querySelector('#erase');
 const hintButton = document.querySelector('#hint');
 
+const gameBoard = document.querySelector('.board');
+
 function init() {
     board = [
     '', '', '', '', '', '', '', '', '',
