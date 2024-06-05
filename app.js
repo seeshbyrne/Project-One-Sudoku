@@ -1,4 +1,3 @@
-
 let winner;
 let number;
 let selectedNumber;
@@ -7,6 +6,7 @@ let clickedEasy = false;
 let clickedMedium = false;
 let clickedHard = false;
 let clickedErase = false;
+let clickedReset = false;
 
 const squareElements = document.querySelectorAll('.sqr');
 const numberElements = document.querySelectorAll('.num');
@@ -45,15 +45,13 @@ function updateBoard() {
     board.forEach((cell, index) => {
         squares[index].textContent = cell;
     });
-}
+};
 
 numberElements.forEach((numberElement) => {
     numberElement.addEventListener('click', () => {
         selectedNumber = numberElement.innerText;
     })
 });
-
-
 
 squareElements.forEach((squareElement, index) => {
     squareElement.addEventListener('click', () => {
@@ -64,48 +62,44 @@ squareElements.forEach((squareElement, index) => {
             checkMediumWinner();
             checkHardWinner();
         };
+
         if (clickedErase === true) {
             squareElement.innerText = '';
             board[index] = '';
             eraseButton.addEventListener('dblclick', () => {
-                clickedErase = false; 
+                clickedErase = false;
             });
         };
+
 
     });
 });
 
-function reset() {
-    if(clickedEasy === true) {
-        playEasy();
-    };
-    if(clickedMedium === true) {
-        playMedium();
-    };
-
-    if(clickedHard === true) {
-        playHard();
-    };
-};
-
 easyButton.addEventListener('click', () => {
-    playEasy()
+    playEasy();
     clickedEasy = true;
+    resetButton.addEventListener('click', () => {
+        playEasy();
+    });
 });
 
 mediumButton.addEventListener('click', () => {
     playMedium()
     clickedMedium = true;
+    resetButton.addEventListener('click', () => {
+        playMedium();
+    });
 });
 
 hardButton.addEventListener('click', () => {
     playHard()
     clickedHard = true;
+    resetButton.addEventListener('click', () => {
+        playHard();
+    });
 });
 
 hintButton.addEventListener('click', displayHint);
-
-resetButton.addEventListener('click', reset);
 
 eraseButton.addEventListener('click', () => {
     clickedErase = true;
@@ -186,26 +180,31 @@ const hardSolution = [
     '6', '8', '5', '9', '3', '2', '7', '1', '4',
     '9', '1', '2', '5', '7', '4', '8', '6', '3'];
 
+
 function getHint() {
-    let randomIndex = Math.floor(Math.random() * board.length);
     let hint;
-    if(board[randomIndex] === '') {
-        if(clickedEasy) {
-        hint = easySolution[randomIndex]; 
-        board[randomIndex] = hint;
-        return randomIndex;
-        }
-        if(clickedMedium) {
-            hint = mediumSolution[randomIndex]; 
-            board[randomIndex] = hint;
-            return randomIndex;
-        }
-        if(clickedHard) {
-            hint = hardSolution[randomIndex]; 
-            board[randomIndex] = hint;
-            return randomIndex;
-        }
-    }
+    while (true) {
+        let randomIndex = Math.floor(Math.random() * board.length);
+   
+        if(board[randomIndex] === '') {
+            if(clickedEasy) {
+                hint = easySolution[randomIndex];
+                board[randomIndex] = hint;
+                return randomIndex;
+        };
+       
+            if(clickedMedium) {
+                hint = mediumSolution[randomIndex];
+                board[randomIndex] = hint;
+                return randomIndex;
+        };
+            if(clickedHard) {
+                hint = hardSolution[randomIndex];
+                board[randomIndex] = hint;
+                return randomIndex;
+        };
+    };
+};
 };
 
 function displayHint() {
@@ -213,9 +212,8 @@ function displayHint() {
     if(randomIndex !== undefined) {
         const squareElement = document.getElementById(randomIndex.toString());
         squareElement.textContent = board[randomIndex];
-    }
+    };
 };
-
 
 function checkEasyWinner() {
     for (let i = 0; i < board.length; i++) {
