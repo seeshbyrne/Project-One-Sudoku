@@ -1,4 +1,4 @@
-# Project One - Sudoku
+# Sudoku
 
 ## How To Play
 
