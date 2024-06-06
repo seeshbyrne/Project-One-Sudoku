@@ -26,8 +26,7 @@ In the square highlight in the example there are two empty spaces. Given the 2 r
 
 ## Give it a go!
 
-Link for game here
-
+[Link for game here](https://seeshbyrne.github.io/Project-One/)
 
 ## Attributions
 
@@ -45,3 +44,4 @@ https://www.geeksforgeeks.org/
 
 ## Next Steps
 
+I intend to complete the game by automating the game to produce random board numbers for each level.
