@@ -6,13 +6,13 @@ Sudoku is made up of a **9x9 grid**. Within the grid, there are 9 squares made u
 
 Each row, column and square needs to be filled with numbers from 1-9, **without repeating any numbers**.
 
-![sudoku example](https://github.com/seeshbyrne/Project-One/assets/169792063/d442ab96-b1ab-41cc-a7cb-d92cf2d1492c")
+![Sudoku example](sudoku example.JPG)
 
 ### Process of Elimination
 
 Sudoku is a game of logic and reasoning, so guessing each number is not suggested. Use the process of elimination to determine each space. For example,
 
-![Process of Elimination in Sudoku]()
+![Process of Elimination in Sudoku](sudoku example.JPG)
 
 look at each of the number 9's. Each row, column and square they are in can immediately be ruled out as a potential space for 9, as there cannot be duplicates.
 
