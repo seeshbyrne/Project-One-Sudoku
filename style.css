@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -158,4 +159,3 @@ h2 {
     transition: padding .5s, top .5s, box-shadow .5s;
     box-shadow: 0.2rem 0.3rem 0 -.05rem #474b48;
 }
-
