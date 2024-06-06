@@ -1,4 +1,4 @@
-let winner;
+
 let number;
 let selectedNumber;
 let board;
@@ -63,6 +63,7 @@ squareElements.forEach((squareElement, index) => {
             checkEasyWinner();
             checkMediumWinner();
             checkHardWinner();
+            checkFullBoard();
         };
 
         if (clickedErase === true) {
@@ -247,9 +248,21 @@ function displayHint() {
     };
 };
 
+function checkFullBoard() {
+    return board.includes('')
+    
+    // let boardIsFull = false;
+    // for (let i = 0; i < board.length; i++) {
+    //     if (board !== '') {
+    //         boardIsFull = true;
+    //     };
+    // };
+};
+
 function checkEasyWinner() {
     for (let i = 0; i < board.length; i++) {
-        if (board[i] !== easySolution[i]) {
+        if (board[i] !== easySolution[i] && board.length !== '') {
+            messageElement.textContent = 'Try Again'
             return;
         };
     };
@@ -273,3 +286,4 @@ function checkHardWinner() {
     };
     messageElement.textContent = 'Congratulations!'
 };
+
