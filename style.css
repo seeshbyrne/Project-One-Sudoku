@@ -9,6 +9,7 @@ body {
     align-items: center;
 }
 
+
 .container {
     display: flex;
     flex-direction: column;
@@ -124,6 +125,7 @@ h2 {
     background-color: rgb(21, 56, 41);
     font-family: 'freeman';
     color: white;
+    cursor: pointer;
 }
 
 .level:hover{
@@ -138,6 +140,7 @@ h2 {
     margin: 0 10px;
     background-color: #fff47c;
     font-family: 'freeman';
+    cursor: pointer;
 }
 
 #reset:hover{
@@ -152,10 +155,52 @@ h2 {
     margin: 0 10px;
     background-color: #7ceeff;
     font-family: 'freeman';
+    cursor: pointer;
 }
 
 #hint:hover {
     top: -0.16em;
     transition: padding .5s, top .5s, box-shadow .5s;
     box-shadow: 0.2rem 0.3rem 0 -.05rem #474b48;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+}
+
+.instructions {
+    padding: 5px;
+    border-radius: 40px;
+    background-color: #ffffff;
+    font-family: 'freeman';
+    cursor: pointer;
+    width: 150px;
+    margin-top: 20px;
+}
+
+.instructionPart {
+    display: flex;
+    justify-content: center;
+    font-family: 'Arial';
+    width: 500px;
+    height: 400px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.instructions:hover {
+    top: -0.16em;
+    transition: padding .5s, top .5s, box-shadow .5s;
+    box-shadow: 0.2rem 0.3rem 0 -.05rem #474b48;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px; 
 }

@@ -12,7 +12,12 @@ const squareElements = document.querySelectorAll('.sqr');
 const numberElements = document.querySelectorAll('.num');
 const messageElement = document.querySelector('#resultMessage');
 const displayElement = document.querySelector ('.display');
+const instructions = document.querySelector('.instructionPart');
+const imgElement = document.createElement('img');
 
+instructions.style.fontStyle = 'italic';
+
+const infoButton = document.querySelector('.instructions');
 const easyButton = document.querySelector('#easy');
 const mediumButton = document.querySelector('#medium');
 const hardButton =  document.querySelector('#hard');
@@ -20,7 +25,6 @@ const resetButton = document.querySelector('#reset');
 const eraseButton = document.querySelector('#erase');
 const hintButton = document.querySelector('#hint');
 
-const gameBoard = document.querySelector('.board');
 
 function init() {
     board = [
@@ -74,7 +78,6 @@ squareElements.forEach((squareElement, index) => {
             });
         };
 
-
     });
 });
 
@@ -108,6 +111,20 @@ eraseButton.addEventListener('click', () => {
     clickedErase = true;
 });
 
+infoButton.addEventListener('click', insertInstructions);
+
+
+
+function insertInstructions() {
+    instructions.textContent = "Sudoku is a game of logic and reasoning. Within the grid, there are 9 squares made up of 3x3 spaces. Each row, column and square needs to be filled with numbers from 1-9, without repeating any numbers."
+    
+    imgElement.src = 'sudoku example.JPG'
+    instructions.appendChild(imgElement);
+
+};
+
+
+
 function playEasy() {
     board = [
     '', '', '', '', '', '', '', '', '',
@@ -121,9 +138,6 @@ function playEasy() {
     '', '', '', '', '', '', '', '', ''];
     render(board);
 };
-
-
-
 
 // function playTwoEasy() {
 //     board = [
@@ -250,19 +264,16 @@ function displayHint() {
 
 function checkFullBoard() {
     return board.includes('')
-    
-    // let boardIsFull = false;
-    // for (let i = 0; i < board.length; i++) {
-    //     if (board !== '') {
-    //         boardIsFull = true;
-    //     };
-    // };
 };
 
 function checkEasyWinner() {
     for (let i = 0; i < board.length; i++) {
-        if (board[i] !== easySolution[i] && board.length !== '') {
-            messageElement.textContent = 'Try Again'
+        winner = checkFullBoard()
+        if (!winner) {
+            messageElement.textContent = 'Sorry! Try again!'
+            return
+        }
+        if (board[i] !== easySolution[i]) {
             return;
         };
     };
@@ -271,8 +282,13 @@ function checkEasyWinner() {
 
 function checkMediumWinner() {
     for (let i = 0; i < board.length; i++) {
+        winner = checkFullBoard()
+        if (!winner) {
+            messageElement.textContent = 'Sorry! Try again!'
+            return
+        }
         if (board[i] !== mediumSolution[i]) {
-        return;
+            return;
         };
     };
     messageElement.textContent = 'Congratulations!'
@@ -280,8 +296,13 @@ function checkMediumWinner() {
 
 function checkHardWinner() {
     for (let i = 0; i < board.length; i++) {
+        winner = checkFullBoard()
+        if (!winner) {
+            messageElement.textContent = 'Sorry! Try again!'
+            return
+        }
         if (board[i] !== hardSolution[i]) {
-        return;
+            return;
         };
     };
     messageElement.textContent = 'Congratulations!'
