@@ -25,7 +25,6 @@ const resetButton = document.querySelector('#reset');
 const eraseButton = document.querySelector('#erase');
 const hintButton = document.querySelector('#hint');
 
-
 function init() {
     board = [
     '', '', '', '', '', '', '', '', '',
@@ -75,6 +74,8 @@ squareElements.forEach((squareElement, index) => {
             board[index] = '';
             eraseButton.addEventListener('dblclick', () => {
                 clickedErase = false;
+                eraseButton.style.backgroundColor = 'pink';
+                eraseButton.style.color = 'black';
             });
         };
 
@@ -109,21 +110,17 @@ hintButton.addEventListener('click', displayHint);
 
 eraseButton.addEventListener('click', () => {
     clickedErase = true;
+    eraseButton.style.backgroundColor = 'red';
+    eraseButton.style.color = 'white';
 });
 
 infoButton.addEventListener('click', insertInstructions);
 
-
-
 function insertInstructions() {
-    instructions.textContent = "Sudoku is a game of logic and reasoning. Within the grid, there are 9 squares made up of 3x3 spaces. Each row, column and square needs to be filled with numbers from 1-9, without repeating any numbers."
-    
+    instructions.textContent = "Sudoku is a game of logic and reasoning. Within the grid, there are 9 squares made up of 3x3 spaces. Each row, column and square must be filled with numbers from 1-9, without any repeats. As you fill the spaces, you can begin to deduce which numbers will go where. E.G. if a row only has two empty spaces, they can only be filled by the two remaining numbers from 1-9 that aren't already there. Made a mistake? Click the erase button to remove any numbers. Double click the button to continue playing."
     imgElement.src = 'sudoku example.JPG'
     instructions.appendChild(imgElement);
-
 };
-
-
 
 function playEasy() {
     board = [
@@ -138,33 +135,6 @@ function playEasy() {
     '', '', '', '', '', '', '', '', ''];
     render(board);
 };
-
-// function playTwoEasy() {
-//     board = [
-//     '', '', '', '', '', '', '', '', '',
-//     '', '', '', '5', '', '2', '4', '8', '7',
-//     '', '8', '4', '', '7', '', '5', '', '9',
-//     '', '4', '', '', '1', '3', '', '9', '5',
-//     '1', '', '8', '', '4', '', '6', '', '2',
-//     '3', '5', '', '9', '6', '', '', '7', '',
-//     '4', '', '3', '', '2', '', '9', '5', '',
-//     '9', '2', '7', '8', '', '1', '', '', '',
-//     '', '', '', '', '', '', '', '', ''];
-// };
-
-// const easyTwoSolution = [
-//     '5', '7', '9', '1', '8', '4', '2', '6', '3',
-//     '6', '3', '1', '5', '9', '2', '4', '8', '7',
-//     '2', '8', '4', '3', '7', '6', '5', '1', '9',
-//     '7', '4', '6', '2', '1', '3', '8', '9', '5',
-//     '1', '9', '8', '7', '4', '5', '6', '3', '2',
-//     '3', '5', '2', '9', '6', '8', '1', '7', '4',
-//     '4', '1', '3', '6', '2', '7', '9', '5', '8',
-//     '9', '2', '7', '8', '5', '1', '3', '4', '6',
-//     '8', '6', '5', '4', '3', '9', '7', '2', '1'
-// ];
-
-
 
 const easySolution = [
     '3', '7', '8', '4', '2', '1', '5', '6', '9',
