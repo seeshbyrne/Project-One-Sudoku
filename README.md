@@ -6,7 +6,7 @@ Sudoku is made up of a **9x9 grid**. Within the grid, there are 9 squares made u
 
 Each row, column and square needs to be filled with numbers from 1-9, **without repeating any numbers**.
 
-![Sudoku example](sudoku example.JPG)
+![Sudoku example](/Project-one/sudoku example.JPG)
 
 ### Process of Elimination
 
