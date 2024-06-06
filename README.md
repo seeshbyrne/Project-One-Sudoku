@@ -12,7 +12,7 @@ Each row, column and square needs to be filled with numbers from 1-9, **without 
 
 Sudoku is a game of logic and reasoning, so guessing each number is not suggested. Use the process of elimination to determine each space. For example,
 
-![Process of Elimination in Sudoku]()
+![Process of Elimination in Sudoku](sudoku example.JPG)
 
 look at each of the number 9's. Each row, column and square they are in can immediately be ruled out as a potential space for 9, as there cannot be duplicates.
 
