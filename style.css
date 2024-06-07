@@ -17,14 +17,12 @@ body {
     font-family: 'freeman';
 }
 
-@media screen and (min-width: 100px) {
-    .board {
+.board {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px ;
         width: 100%;
         margin-bottom: 20px;
-    }
 }
 
 h1 {

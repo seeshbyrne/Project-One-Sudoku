@@ -25,6 +25,7 @@ const resetButton = document.querySelector('#reset');
 const eraseButton = document.querySelector('#erase');
 const hintButton = document.querySelector('#hint');
 
+
 function init() {
     board = [
     '', '', '', '', '', '', '', '', '',
@@ -45,6 +46,9 @@ function render() {
     updateBoard();
 };
 
+
+
+// Update content of HTML elements
 function updateBoard() {
     const squares = document.querySelectorAll('.sqr');
     board.forEach((cell, index) => {
@@ -52,12 +56,14 @@ function updateBoard() {
     });
 };
 
+//User picks a number
 numberElements.forEach((numberElement) => {
     numberElement.addEventListener('click', () => {
         selectedNumber = numberElement.innerText;
     })
 });
 
+//Display user choice on board
 squareElements.forEach((squareElement, index) => {
     squareElement.addEventListener('click', () => {
         if (selectedNumber && !squareElement.innerText) {
@@ -82,6 +88,8 @@ squareElements.forEach((squareElement, index) => {
     });
 });
 
+
+
 easyButton.addEventListener('click', () => {
     playEasy();
     clickedEasy = true;
@@ -99,7 +107,6 @@ mediumButton.addEventListener('click', () => {
         playMedium();
     });
 });
-
 
 hardButton.addEventListener('click', () => {
     playHard()
@@ -120,11 +127,7 @@ eraseButton.addEventListener('click', () => {
 
 infoButton.addEventListener('click', insertInstructions);
 
-function insertInstructions() {
-    instructions.textContent = "Sudoku is a game of logic and reasoning. Within the grid, there are 9 squares made up of 3x3 spaces. Each row, column and square must be filled with numbers from 1-9, without any repeats. As you fill the spaces, you can begin to deduce which numbers will go where. E.G. if a row only has two empty spaces, they can only be filled by the two remaining numbers from 1-9 that aren't already there. Made a mistake? Click the erase button to remove any numbers. Double click the button to continue playing."
-    imgElement.src = 'sudoku example.JPG'
-    instructions.appendChild(imgElement);
-};
+
 
 function playEasy() {
     board = [
@@ -201,6 +204,15 @@ const hardSolution = [
     '6', '8', '5', '9', '3', '2', '7', '1', '4',
     '9', '1', '2', '5', '7', '4', '8', '6', '3'];
 
+function insertInstructions() {
+    instructions.textContent = "Sudoku is a game of logic and reasoning. Within the grid, there are 9 squares made up of 3x3 spaces. Each row, column and square must be filled with numbers from 1-9, without any repeats. As you fill the spaces, you can begin to deduce which numbers will go where. E.G. if a row only has two empty spaces, they can only be filled by the two remaining numbers from 1-9 that aren't already there. Made a mistake? Click the erase button to remove any numbers. Double click the button to continue playing."
+    imgElement.src = 'sudoku example.JPG'
+    instructions.appendChild(imgElement);
+};
+
+
+//Selects the square and collects the correct number
+
 function getHint() {
     let hint;
     while (true) {
@@ -233,6 +245,8 @@ function displayHint() {
     };
 };
 
+
+// Checking for Winners //
 
 function checkFullBoard() {
     return board.includes('');
@@ -285,22 +299,3 @@ function checkHardWinner() {
         messageElement.textContent = ''
     });
 };
-
-
-
-
-// function resetGame() {
-//     messageElement.textContent = '';
-//     if (clickedEasy) {
-//         playEasy();
-//     };
-//     if (clickedMedium) {
-//         playMedium();
-//     };
-//     if (clickedHard) {
-//         playHard();
-//     };
-// };
-
-// resetButton.addEventListener('click', resetGame);
-
