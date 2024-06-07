@@ -86,6 +86,7 @@ easyButton.addEventListener('click', () => {
     playEasy();
     clickedEasy = true;
     resetButton.addEventListener('click', () => {
+        messageElement.textContent = '';
         playEasy();
     });
 });
@@ -94,14 +95,17 @@ mediumButton.addEventListener('click', () => {
     playMedium()
     clickedMedium = true;
     resetButton.addEventListener('click', () => {
+        messageElement.textContent = '';
         playMedium();
     });
 });
+
 
 hardButton.addEventListener('click', () => {
     playHard()
     clickedHard = true;
     resetButton.addEventListener('click', () => {
+        messageElement.textContent = '';
         playHard();
     });
 });
@@ -197,19 +201,16 @@ const hardSolution = [
     '6', '8', '5', '9', '3', '2', '7', '1', '4',
     '9', '1', '2', '5', '7', '4', '8', '6', '3'];
 
-
 function getHint() {
     let hint;
     while (true) {
         let randomIndex = Math.floor(Math.random() * board.length);
-   
         if(board[randomIndex] === '') {
             if(clickedEasy) {
                 hint = easySolution[randomIndex];
                 board[randomIndex] = hint;
                 return randomIndex;
         };
-       
             if(clickedMedium) {
                 hint = mediumSolution[randomIndex];
                 board[randomIndex] = hint;
@@ -232,49 +233,74 @@ function displayHint() {
     };
 };
 
+
 function checkFullBoard() {
-    return board.includes('')
+    return board.includes('');
 };
 
 function checkEasyWinner() {
     for (let i = 0; i < board.length; i++) {
-        winner = checkFullBoard()
-        if (!winner) {
-            messageElement.textContent = 'Sorry! Try again!'
-            return
-        }
+        winner = checkFullBoard();
         if (board[i] !== easySolution[i]) {
             return;
         };
+        if (!winner) {
+            messageElement.textContent = 'Sorry Try Again!'
+        };
     };
-    messageElement.textContent = 'Congratulations!'
+    messageElement.textContent = 'Congratulations!' 
+    resetButton.addEventListener('click', () => {
+        messageElement.textContent = ''
+    });
 };
 
 function checkMediumWinner() {
     for (let i = 0; i < board.length; i++) {
-        winner = checkFullBoard()
-        if (!winner) {
-            messageElement.textContent = 'Sorry! Try again!'
-            return
-        }
+        winner = checkFullBoard();
         if (board[i] !== mediumSolution[i]) {
             return;
         };
+        if (!winner) {
+            messageElement.textContent = 'Sorry Try Again!'
+        };
     };
     messageElement.textContent = 'Congratulations!'
+    resetButton.addEventListener('click', () => {
+        messageElement.textContent = ''
+    });
 };
 
 function checkHardWinner() {
     for (let i = 0; i < board.length; i++) {
-        winner = checkFullBoard()
-        if (!winner) {
-            messageElement.textContent = 'Sorry! Try again!'
-            return
-        }
+        winner = checkFullBoard();
         if (board[i] !== hardSolution[i]) {
             return;
         };
+        if (!winner) {
+            messageElement.textContent = 'Sorry Try Again!'
+        };
     };
     messageElement.textContent = 'Congratulations!'
+    resetButton.addEventListener('click', () => {
+        messageElement.textContent = ''
+    });
 };
+
+
+
+
+// function resetGame() {
+//     messageElement.textContent = '';
+//     if (clickedEasy) {
+//         playEasy();
+//     };
+//     if (clickedMedium) {
+//         playMedium();
+//     };
+//     if (clickedHard) {
+//         playHard();
+//     };
+// };
+
+// resetButton.addEventListener('click', resetGame);
 
