@@ -26,7 +26,7 @@ In the square highlight in the example there are two empty spaces. Given the 2 r
 
 ## Give it a go!
 
-[Link for game here](https://seeshbyrne.github.io/Project-One/)
+https://seeshbyrne.github.io/Project-One-Sudoku/    
 
 ## Attributions
 
